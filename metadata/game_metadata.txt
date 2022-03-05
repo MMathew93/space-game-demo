@@ -1,0 +1,12 @@
+#devid=mathewmckinney
+#devtitle=Mathew McKinney
+#gameid=working-space-title-demo
+#gametitle=Working Space Title Demo
+#version=0.1
+#icon=metadata/icon.pngSS
+
+# Uncomment the entry below to bytecode compile your Ruby code (Pro License Only)
+#compile_ruby=false
+
+# Uncomment the entry below to specify the package name for your APK (Pro License Only)
+#packageid=org.dev.gamename
