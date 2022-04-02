@@ -5,7 +5,6 @@ class SpaceGame
   #Set up State
   def initialize(args)
     @args = args
-    @scene = args.state.scene
     @menu = Menu.new(args)
     @game = Battle_Scene.new(args)
   end
@@ -24,12 +23,12 @@ class SpaceGame
   end
 
   def render_menu
-    return unless @scene == :menu
+    return unless @args.state.scene == :menu
     @menu.render
   end
 
   def render_game
-    return unless @scene == :game
+    return unless @args.state.scene == :game
     #Render all the items from the game file
     #this includes the background, heroes and enemies
     @game.render

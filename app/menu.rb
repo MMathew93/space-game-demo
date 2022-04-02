@@ -4,9 +4,6 @@ class Menu
     @inputs = args.inputs
     @outputs = args.outputs
     @grid = args.grid
-    @difficulty = args.state.difficulty
-    @new_difficulty = args.state.new_difficulty
-    @scene = args.state.scene
   end
 
   def white
@@ -22,7 +19,7 @@ class Menu
     @outputs.labels << { x: 430, y: 400, text: "[Enter]  Start at New Difficulty ", size_enum: 4, alignment_enum: 0, **white }
     @outputs.labels << { x: 430, y: 370, text: "[Escape] Cancel/Resume ", size_enum: 4, alignment_enum: 0, **white }
     @outputs.labels << { x: 640, y: 300, text: "(Best played with a game controller!) ", size_enum: 4, alignment_enum: 1, **white }
-    @outputs.labels << { x: 640, y: 200, text: "Difficulty: #{@difficulty}", size_enum: 4, alignment_enum: 1, **white }
+    @outputs.labels << { x: 640, y: 200, text: "Difficulty: #{@args.state.new_difficulty}", size_enum: 4, alignment_enum: 1, **white }
 
     @outputs.labels << { x: 10, y: 100, text: "Code:   @MMathew93",     **white }
     @outputs.labels << { x: 10, y:  80, text: "Art:    @Eva_Trujillo",     **white }
@@ -40,20 +37,21 @@ class Menu
   end
 
   def process_inputs
+    return unless @args.state.scene == :menu
     #do menu inputs like difficulty, moving cursor, etc
     changediff = @inputs.keyboard.key_down.tab
 
     if changediff
-      case @new_difficulty
+      case @args.state.new_difficulty
       when :normal
-        @new_difficulty = :normal
+        @args.state.new_difficulty = :hard
       when :hard
-        @new_difficulty = :hard
+        @args.state.new_difficulty = :normal
       end
     end
 
     if @inputs.keyboard.key_down.enter
-      @difficulty = @new_difficulty
+      @args.state.difficulty = @args.state.new_difficulty
       #start game stuff
       change_to_scene(:game)
     end
@@ -61,7 +59,7 @@ class Menu
   end
 
   def change_to_scene(scene)
-    @scene = scene
+    @args.state.scene = scene
     #state.scene_at = state.tick_count
     @inputs.keyboard.clear
     ##inputs.controller_one.clear
