@@ -1,11 +1,11 @@
-require 'app/menu.rb'
+require 'app/main_menu.rb'
 require 'app/battle_scene.rb'
 
 class SpaceGame
   #Set up State
   def initialize(args)
     @args = args
-    @menu = Menu.new(args)
+    @main_menu = Menu.new(args)
     @game = Battle_Scene.new(args)
   end
 
@@ -18,13 +18,13 @@ class SpaceGame
 
   def render
     #outputs.sounds << "sounds/flappy-song.ogg" if state.tick_count == 1
-    render_menu
+    render_main_menu
     render_game
   end
 
-  def render_menu
+  def render_main_menu
     return unless @args.state.scene == :menu
-    @menu.render
+    @main_menu.render
   end
 
   def render_game
@@ -35,7 +35,7 @@ class SpaceGame
   end
 
   def process_inputs
-    @menu.process_inputs
+    @main_menu.process_inputs
     #@game.process_inputs
   end
 

@@ -33,7 +33,7 @@ class Menu
                             y: overlay_grid.y,
                             w: overlay_grid.w,
                             h: overlay_grid.h,
-                            r: 0, g: 0, b: 0, a: 230 }.solid!
+                            r: 0, g: 0, b: 0, a: 230 }.solid
   end
 
   def process_inputs

@@ -20,12 +20,12 @@ class Battle_Scene
                             y: 0, 
                             w: 1280, 
                             h: 720,
-                            r: 255, g: 255, b: 255}.solid!
+                            r: 255, g: 255, b: 255}.solid
     @outputs.primitives << {x: 0, 
                             y: 0, 
                             w: 1280, 
                             h: 100, 
-                            r: 0, g: 0, b: 0}.solid!
+                            r: 0, g: 0, b: 0}.solid
   end
 
   def create_heroes
@@ -43,12 +43,21 @@ class Battle_Scene
     end
 
     render_heroes
+    render_hero_info
   end
 
   def render_heroes
     @strHero.render
     @dexHero.render
     @intHero.render
+  end
+
+  def render_hero_info
+    @outputs.primitives << {x: 100,
+                            y: 600,
+                            w: 225,
+                            h:100,
+                            r: 200, g: 100, b: 50}.solid
   end
 
   def create_enemies
@@ -72,5 +81,7 @@ class Battle_Scene
     return unless @args.state.scene == :game
     @enemy.map {|enemy| enemy.render}
   end
+
+  
 
 end

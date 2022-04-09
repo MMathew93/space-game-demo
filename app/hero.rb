@@ -16,7 +16,7 @@ class Hero
 
   #render the hero
   def render
-    @outputs.primitives << @sprite.solid!
+    @outputs.primitives << @sprite.solid
   end
 
   #attack method

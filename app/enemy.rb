@@ -1,6 +1,5 @@
 class Enemy
-  #we'll want to define if the enemy is a boss
-  #it's name, health amount, defense and 
+  #Need to define the enemies name, health, amount, defense and 
   #differing attack powers for different attack types
   #attack_power will be an array, typically bosses will have a special attack
   def initialize(args, name, health, attack_power, defense, sprite)
@@ -16,7 +15,7 @@ class Enemy
 
   #render the enemy
   def render
-    @outputs.primitives << @sprite.solid!
+    @outputs.primitives << @sprite.solid
   end
 
   #attack method
